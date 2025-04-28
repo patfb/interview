@@ -11,7 +11,7 @@ const aStudent2 = {
 };
 
 const aStudent3 = {
-  name: "Linux Torvalds",
+  name: "Linus Torvalds",
   grades: [95, 54, 69, 99, 73],
   team: "apple",
 };

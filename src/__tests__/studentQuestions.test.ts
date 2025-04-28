@@ -43,7 +43,7 @@ describe("interview", () => {
       expect(getStudentsWithHighestSingleGrade(students)).toStrictEqual([
         {
           grades: [95, 54, 69, 99, 73],
-          name: "Linux Torvalds",
+          name: "Linus Torvalds",
           team: "apple",
         },
         {
