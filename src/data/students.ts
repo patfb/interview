@@ -30,7 +30,7 @@ const bStudent1 = {
 
 const bStudent2 = {
   name: "Margaret Hamilton",
-  grades: [88, 55, 78, 84, 81],
+  grades: [88, 99, 78, 84, 81],
   team: "banana",
 };
 

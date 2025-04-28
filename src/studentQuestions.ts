@@ -72,13 +72,35 @@ const getAverageByTeam = (students: Student[]) => {
   return result;
 };
 
-// 4. ? maybe move up
-const getStudentWithHighestSingleGrade = (students: Student[]) => {
-  let maxGrade: Student;
+// 4. Get the Student with the highest single grade
+const getStudentsWithHighestSingleGrade = (students: Student[]) => {
+  let maxGrade: number;
+  let maxStudent: Student[] = [];
+
+  students.forEach((student) => {
+    const maxForStudent = Math.max(...student.grades);
+
+    if (!maxStudent.length) {
+      maxStudent = [student];
+      maxGrade = maxForStudent;
+    }
+
+    if (maxForStudent === maxGrade) {
+      maxStudent.push(student);
+    }
+
+    if (maxForStudent > maxGrade) {
+      maxGrade = maxForStudent;
+      maxStudent = [student];
+    }
+  });
+
+  return maxStudent;
 };
 
 export {
   getAverageGradeOfAllStudents,
   getAverageGradeOfEachTeam,
   getAverageByTeam,
+  getStudentsWithHighestSingleGrade,
 };

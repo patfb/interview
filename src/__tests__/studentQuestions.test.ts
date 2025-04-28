@@ -1,46 +1,30 @@
-import { describe, it, expect } from "@jest/globals";
-
+import { describe, expect, it } from "@jest/globals";
+import { students } from "../data/students";
 import {
   getAverageByTeam,
   getAverageGradeOfAllStudents,
   getAverageGradeOfEachTeam,
+  getStudentsWithHighestSingleGrade,
 } from "../studentQuestions";
-import { students } from "../data/students";
-
-// 1)
-
-// what is the average grade of all students class?
-// which student had the highest grade overall?
-// which team had the highest average grade
-// which student had the lowest single grade?
-// which student on each team had the lowest single grade?
-// how many teams are there?
-
-// see how they group data together
-
-// 2) Make it more difficult by making the data bad
-// - see if they sanitizze the data at the start
-
-// data might be bad
 
 describe("interview", () => {
-  describe("getAverageGrade", () => {
+  describe("#1 getAverageGrade", () => {
     it("should get the average grade from all students", () => {
-      expect(getAverageGradeOfAllStudents(students)).toStrictEqual(79.5);
+      expect(getAverageGradeOfAllStudents(students)).toStrictEqual(80.6);
     });
   });
 
-  describe("getAverageGradeOfEachTeam", () => {
+  describe("#2 getAverageGradeOfEachTeam", () => {
     it("should get the average grade from the apple team and the banana team", () => {
       expect(getAverageGradeOfEachTeam(students)).toStrictEqual({
         apple: 80.2,
-        banana: 78.8,
+        banana: 81,
       });
     });
   });
 
-  describe("getAverageByTeam", () => {
-    it.only("should get the average grade for each team even when we don't know how many teams there are", () => {
+  describe("#3 getAverageByTeam", () => {
+    it("should get the average grade for each team even when we don't know how many teams there are", () => {
       expect(getAverageByTeam(students)).toStrictEqual([
         {
           name: "apple",
@@ -48,13 +32,26 @@ describe("interview", () => {
         },
         {
           name: "banana",
-          average: 78.8,
+          average: 81,
         },
       ]);
     });
   });
 
-  describe("getStudentWithHighestSingleGrade", () => {
-    it("should return the student with the highest single grade (not the highest average grade)", () => {});
+  describe("#4 getStudentWithHighestSingleGrade", () => {
+    it("should return the student with the highest single grade (not the highest average grade)", () => {
+      expect(getStudentsWithHighestSingleGrade(students)).toStrictEqual([
+        {
+          grades: [95, 54, 69, 99, 73],
+          name: "Linux Torvalds",
+          team: "apple",
+        },
+        {
+          grades: [88, 99, 78, 84, 81],
+          name: "Margaret Hamilton",
+          team: "banana",
+        },
+      ]);
+    });
   });
 });
