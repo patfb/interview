@@ -37,7 +37,7 @@ const getAverageGradeOfEachTeam = (students: Student[]) => {
   return { apple: appleAverage, banana: bananaAverage };
 };
 
-// 3. Get the average grade for each team when we're not sure how many teams there are
+// 3. Get the average grade for every team when we're not sure how many teams there are
 const getAverageByTeam = (students: Student[]) => {
   const _getAverageGrade = (grades: number[]) => {
     const total = grades.reduce((sum, grade) => sum + grade, 0);
